@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/css/smart-wizard.min.css">
+</head>
+
+<body>
+    <form id="wizard1">
+        <div aria-step-title="Tab-1" aria-step-description="Description-1">
+            1
+        </div>
+        <div aria-step-title="Tab-2" aria-step-description="Description-2">
+            2
+        </div>
+        <div aria-step-title="Tab-3" aria-step-description="Description-3">
+            3
+        </div>
+        <div aria-step-title="Tab-4" aria-step-description="Description-4">
+            4
+        </div>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="assets/js/smart-wizard.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            let swOptions = {};
+
+            swOptions.onCancel = function (e) {
+                console.log('onCancel', e);
+            };
+
+            swOptions.onAccept = function (e) {
+                console.log('onAccept', e);
+            };
+
+            swOptions.onNext = function (e) {
+                console.log('onNext', e.referanceNext, e.referanceNextId, e.referanceCurrent, e
+                    .referanceCurrentId);
+                return true;
+            };
+
+            $('#wizard1').sw(swOptions);
+        });
+    </script>
+</body>
+
+</html>
